@@ -3,20 +3,26 @@
 </template>
 
 <script>
-import * as BABYLON from 'babylonjs';
+import {
+  Engine,
+  Scene,
+  ArcRotateCamera,
+  Vector3,
+  HemisphericLight,
+  MeshBuilder,
+} from '@babylonjs/core';
 
 export default {
-  name: 'HelloWorld',
   mounted() {
     const canvas = this.$refs.renderCanvas;
-    const engine = new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true });
-    const scene = new BABYLON.Scene(engine);
-    const camera = new BABYLON.ArcRotateCamera('camera', -Math.PI / 2, Math.PI / 2.5, 3, new BABYLON.Vector3(0, 0, 0), scene);
+    const engine = new Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true });
+    const scene = new Scene(engine);
 
+    const camera = new ArcRotateCamera('camera', -Math.PI / 2, Math.PI / 2.5, 3, new Vector3(0, 0, 0), scene);
     camera.attachControl(canvas, true);
 
-    new BABYLON.HemisphericLight('light', new BABYLON.Vector3(0, 1, 0), scene);
-    BABYLON.MeshBuilder.CreateBox('box', {}, scene);
+    new HemisphericLight('light', new Vector3(0, 1, 0), scene);
+    MeshBuilder.CreateBox('box', {}, scene);
 
     engine.runRenderLoop(() => {
       scene.render();
