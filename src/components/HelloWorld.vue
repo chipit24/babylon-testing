@@ -21,9 +21,11 @@ export default {
     const camera = new ArcRotateCamera('camera', -Math.PI / 2, Math.PI / 2.5, 3, new Vector3(0, 0, 0), scene);
     camera.attachControl(canvas, true);
 
-    MeshBuilder.CreateBox('box', {}, scene);
     new HemisphericLight('light', new Vector3(10, 10, 0), scene);
 
+    const box = MeshBuilder.CreateBox('box', {}, scene);
+    box.position.y = 0.5;
+    MeshBuilder.CreateGround('ground', { width: 10, height: 10 });
     engine.runRenderLoop(() => {
       scene.render();
     });
