@@ -21,7 +21,8 @@ export default {
     const scene = new Scene(engine);
 
     const camera = new ArcRotateCamera('camera', -Math.PI / 2, Math.PI / 2.5, 3, new Vector3(0, 0, 0), scene);
-    camera.attachControl(canvas, true);
+    camera.attachControl();
+    camera.wheelPrecision = 25;
 
     new HemisphericLight('light', new Vector3(10, 10, 0), scene);
 
@@ -43,6 +44,7 @@ export default {
 </script>
 
 <style>
+#app,
 .canvas {
   width: 100%;
   height: 100%;
