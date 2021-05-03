@@ -1,14 +1,19 @@
 module.exports = {
-  "root": true,
-    "env": {
-    "node": true
+  root: true,
+  env: {
+    node: true,
   },
-  "extends": [
-    "plugin:vue/essential",
-    "eslint:recommended"
+  extends: [
+    'plugin:vue/essential',
+    'eslint:recommended',
   ],
-    "parserOptions": {
-    "parser": "babel-eslint"
+  parserOptions: {
+    parser: 'babel-eslint',
   },
-  "rules": {}
-}
+  rules: {
+    quotes: ['error', 'single'],
+    'quote-props': ['error', 'as-needed'],
+    semi: ['error', 'always'],
+    'comma-dangle': ['error', 'always-multiline'],
+  },
+};

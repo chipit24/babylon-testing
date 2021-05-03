@@ -38,8 +38,8 @@ export default {
     window.addEventListener('resize', () => {
       engine.resize();
     });
-  }
-}
+  },
+};
 </script>
 
 <style>
