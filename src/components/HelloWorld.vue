@@ -10,7 +10,9 @@ import {
   Vector3,
   HemisphericLight,
   MeshBuilder,
+  Sound,
 } from '@babylonjs/core';
+import villageSound from '/village_sound.mp3';
 
 export default {
   mounted() {
@@ -26,6 +28,9 @@ export default {
     const box = MeshBuilder.CreateBox('box', {}, scene);
     box.position.y = 0.5;
     MeshBuilder.CreateGround('ground', { width: 10, height: 10 });
+
+    new Sound('name', villageSound, scene, null, { loop: true, autoplay: true });
+
     engine.runRenderLoop(() => {
       scene.render();
     });
