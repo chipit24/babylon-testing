@@ -15,5 +15,6 @@ module.exports = {
     'quote-props': ['error', 'as-needed'],
     semi: ['error', 'always'],
     'comma-dangle': ['error', 'always-multiline'],
+    'object-curly-spacing': ['error', 'always'],
   },
 };
