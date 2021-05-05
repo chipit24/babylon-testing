@@ -12,8 +12,13 @@ import {
   MeshBuilder,
   Sound,
   Tools,
+  StandardMaterial,
+  Color3,
+  Texture,
 } from '@babylonjs/core';
 import villageSound from '/village_sound.mp3';
+import roofTexture from '@/textures/roof.jpeg';
+import brickTexture from '@/textures/brick.jpeg';
 
 export default {
   mounted() {
@@ -31,13 +36,22 @@ export default {
     box.position = new Vector3(-5, 2, 5);
     box.scaling = new Vector3(8, 4, 6);
     box.rotation = new Vector3(0, Tools.ToRadians(45), 0);
+    const boxMaterial = new StandardMaterial('boxMaterial', scene);
+    boxMaterial.diffuseTexture = new Texture(brickTexture, scene);
+    box.material = boxMaterial;
 
     const roof = MeshBuilder.CreateCylinder('roof', { tessellation: 3 });
     roof.scaling = new Vector3(2, 4, 7);
     roof.rotation = new Vector3(0, Tools.ToRadians(45), Tools.ToRadians(90));
     roof.position = new Vector3(-5, 4.5, 5);
+    const roofMaterial = new StandardMaterial('roofMaterial', scene);
+    roofMaterial.diffuseTexture = new Texture(roofTexture, scene);
+    roof.material = roofMaterial;
 
-    MeshBuilder.CreateGround('ground', { width: 20, height: 20 });
+    const ground = MeshBuilder.CreateGround('ground', { width: 20, height: 20 });
+    const groundMaterial = new StandardMaterial('groundMaterial', scene);
+    groundMaterial.diffuseColor = Color3.FromHexString('#608038');
+    ground.material = groundMaterial;
 
     new Sound('name', villageSound, scene, null, { loop: true, autoplay: true });
 
