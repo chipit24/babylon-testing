@@ -1,5 +1,7 @@
 # babylon-testing
 
+<img width="300" src="https://user-images.githubusercontent.com/7561061/117170055-a97adb00-ad97-11eb-8867-6ac79225ba00.png">
+
 ## Project setup
 ```
 npm install
