@@ -3,6 +3,8 @@
 </template>
 
 <script>
+import '@babylonjs/core/Debug/debugLayer';
+import '@babylonjs/inspector';
 import {
   Engine,
   Scene,
@@ -51,6 +53,17 @@ export default {
 
     window.addEventListener('resize', () => {
       engine.resize();
+    });
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'I') {
+        if (this.scene.debugLayer.isVisible()) {
+          this.scene.debugLayer.hide();
+        } else {
+          console.log('showing inspector');
+          this.scene.debugLayer.show();
+        }
+      }
     });
 
     this.createHouse();
